@@ -1,0 +1,30 @@
+.card-total {
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-in-out;
+}
+.card-total:hover {
+  transform: translateY(-4px);
+}
+.card-title {
+  font-size: 1.1rem;
+  color: #555;
+}
+.card-value {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.card-icon {
+  font-size: 2.5rem;
+  color: #007bff;
+}
+.div-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #007bff;
+}
+#totales {
+background-color: #ffffff;
+}
