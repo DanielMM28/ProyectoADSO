@@ -15,20 +15,50 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     setError('');
+    
     const usuario = usuariosFalsos.find((u) => u.email === email && u.clave === clave);
 
     if (usuario) {
+      localStorage.setItem('usuario', JSON.stringify(usuario)); // << CLAVE PARA LAS RUTAS PRIVADAS
       localStorage.setItem('token', 'simulado_token');
-      localStorage.setItem('rol', usuario.rol);
-      navigate(usuario.rol === 'admin' ? '/inicio' : '/productos');
+
+      // Redirigir según el rol
+      if (usuario.rol === 'admin') {
+        navigate('/inicio');
+      } else if (usuario.rol === 'comprador') {
+        navigate('/productos');
+      } else {
+        navigate('/inicio1'); // o cualquier página para visitantes
+      }
     } else {
       setError('Correo o contraseña incorrectos');
     }
   };
 
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    setError('');
+
+    if (!email || !clave || !confirmClave || !nombre) {
+      setError('Todos los campos son obligatorios');
+      return;
+    }
+
+    if (clave !== confirmClave) {
+      setError('Las contraseñas no coinciden');
+      return;
+    }
+
+    alert('Registro exitoso. Ahora puede iniciar sesión.');
+    setIsSignUp(false);
+    setNombre('');
+    setEmail('');
+    setClave('');
+    setConfirmClave('');
+  };
+
   return (
     <div className={`container-login ${isSignUp ? 'sign-up-mode' : ''}`}>
-      {/* Formulario de INICIO */}
       {!isSignUp && (
         <div className="container-form">
           <form className="sign-in" onSubmit={handleLogin}>
@@ -63,11 +93,9 @@ const Login = () => {
           </form>
         </div>
       )}
-
-     
-      </div>
-
+    </div>
   );
 };
 
 export default Login;
+
