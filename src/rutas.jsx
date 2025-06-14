@@ -24,7 +24,7 @@ const RutaPrivada = ({ children }) => {
 };
 
 function Rutas() {
-  const usuario = JSON.parse(localStorage.getItem('usuario'));
+ const usuario = JSON.parse(localStorage.getItem('usuario'));
 
   return (
  <CarritoProvider>
@@ -48,7 +48,7 @@ function Rutas() {
 
           <Route
             path="*"
-            element={<Navigate to={usuario ? "/" : "/inicio"} replace />}
+              element={<Navigate to={usuario ? "/inicio" : "/login"} replace />}
           />
         </Routes>
       </Router>
@@ -57,3 +57,4 @@ function Rutas() {
 }
 
 export default Rutas;
+
