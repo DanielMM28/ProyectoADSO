@@ -5,7 +5,7 @@ import Inicio from './pages/inicio';
 import Login from './pages/login';
 import ListProductos from './pages/inventario/InvProduct';
 import Categorías from './pages/inventario/categorias'; 
-import Marcas from './pages/inventario/Marcas';
+import Marcas from './pages/inventario/marcas';
 import Clientes from './pages/Clientes';
 import Usuarios from './pages/Usuario';
 import Historial from './pages/Historial';
