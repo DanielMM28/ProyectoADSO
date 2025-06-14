@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { usuariosFalsos } from '../data/usuariosfalsos';
+import { AuthContext } from '../autenticacion';
 import './login.css';
 
 const Login = () => {
@@ -11,25 +12,16 @@ const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { login } = useContext(AuthContext); // ✅ Usamos el contexto
 
   const handleLogin = (e) => {
     e.preventDefault();
     setError('');
-    
     const usuario = usuariosFalsos.find((u) => u.email === email && u.clave === clave);
 
     if (usuario) {
-      localStorage.setItem('usuario', JSON.stringify(usuario)); // << CLAVE PARA LAS RUTAS PRIVADAS
-      localStorage.setItem('token', 'simulado_token');
-
-      // Redirigir según el rol
-      if (usuario.rol === 'admin') {
-        navigate('/inicio');
-      } else if (usuario.rol === 'comprador') {
-        navigate('/productos');
-      } else {
-        navigate('/inicio1'); // o cualquier página para visitantes
-      }
+      login(usuario.rol); // ✅ Llamamos al método del contexto
+      navigate(usuario.rol === 'admin' ? '/inicio' : '/productos');
     } else {
       setError('Correo o contraseña incorrectos');
     }
@@ -98,4 +90,3 @@ const Login = () => {
 };
 
 export default Login;
-

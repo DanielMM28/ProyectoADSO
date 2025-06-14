@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { Link } from 'react-router-dom';
@@ -8,30 +8,11 @@ import perfil from '../assets/perfil.png';
 
 import './navbar.css';
 import PerfilMenu from './verperfil';
+import { AuthContext } from '../autenticacion'; // <-- Importa el contexto
 
 const Navbar = () => {
-  const [rol, setRol] = useState(localStorage.getItem('rol'));
-
-  useEffect(() => {
-    const handleStorageChange = () => {
-      setRol(localStorage.getItem('rol'));
-    };
-
-    window.addEventListener('storage', handleStorageChange);
-
-    // Verifica cambios cada 500ms en la misma pestaña
-    const interval = setInterval(() => {
-      const currentRol = localStorage.getItem('rol');
-      if (currentRol !== rol) {
-        setRol(currentRol);
-      }
-    }, 500);
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      clearInterval(interval);
-    };
-  }, [rol]);
+  const { usuario } = useContext(AuthContext); // <-- Usa el contexto
+  const rol = usuario?.rol || null;
 
   return (
     <nav className="navbar navbar-expand-lg navbar-custom bg-light">
@@ -46,16 +27,12 @@ const Navbar = () => {
 
         <div className="collapse navbar-collapse" id="navbarContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
             {rol === null && (
-<>
-             <li className="nav-item">
-                  <Link className="nav-link" to="/inicio1">
-                    <i className="bi bi-house-door me-2"></i>Inicio
-                  </Link>
-                </li>
-                                 
-                </>
+              <li className="nav-item">
+                <Link className="nav-link" to="/inicio1">
+                  <i className="bi bi-house-door me-2"></i>Inicio
+                </Link>
+              </li>
             )}
 
             {rol === 'visitante' && (
@@ -66,7 +43,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" style={{ whiteSpace: 'nowrap' }} to="/Productos">
+                  <Link className="nav-link" to="/Productos">
                     <i className="bi bi-box-arrow-in-right me-2"></i>Productos
                   </Link>
                 </li>
@@ -76,7 +53,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" style={{ whiteSpace: 'nowrap' }} to="/login" id='login-link'>
+                  <Link className="nav-link" to="/login">
                     <i className="bi bi-box-arrow-in-right me-2"></i>Iniciar Sesión
                   </Link>
                 </li>
@@ -91,7 +68,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" style={{ whiteSpace: 'nowrap' }} to="/Productos">
+                  <Link className="nav-link" to="/Productos">
                     <i className="bi bi-box-arrow-in-right me-2"></i>Productos
                   </Link>
                 </li>
@@ -159,7 +136,6 @@ const Navbar = () => {
                 </li>
               </>
             )}
-
           </ul>
 
           <div className="d-flex align-items-center">
@@ -172,4 +148,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
