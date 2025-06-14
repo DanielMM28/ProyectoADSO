@@ -15,7 +15,7 @@ const Carrito = () => {
         style={{  position: 'fixed', top: 130, right: 0, borderRadius: '40px' }}
         className="btn btn-secondary mt-auto"
       >
-        🛒 ({carrito.length})
+        🛒  {carrito.length > 0 ? `(${carrito.reduce((acc, item) => acc + item.cantidad, 0)})` : 'Carrito'}
       </button>
 
       <div
