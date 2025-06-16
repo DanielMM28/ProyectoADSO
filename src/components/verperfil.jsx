@@ -10,7 +10,7 @@ const PerfilMenu = () => {
 
   const usuario = {
     nombre: 'Iniciar Sesión',
-      avatar: perfilImg,// reemplaza por una real
+      avatar: perfilImg,
   };
 
   const toggleDropdown = () => setShow(!show);
@@ -34,7 +34,7 @@ const PerfilMenu = () => {
 const rol = localStorage.getItem('rol');
   return (
     <div ref={dropdownRef} className="position-relative d-inline-block">
-      <button className="btn btn-light d-flex align-items-center gap-2" onClick={toggleDropdown}>
+      <button className="btn btn-light d-flex align-items-center gap-2" onClick={toggleDropdown} style={{ backgroundColor: 'white' }}>
         <Image src={usuario.avatar} roundedCircle width={30} height={30} />
         <span className="d-none d-md-inline">{rol === 'admin' ? 'Administrador' : 'Usuario'}</span>
         <i className={`bi bi-chevron-${show ? 'up' : 'down'} ms-2`}></i>
@@ -46,9 +46,10 @@ const rol = localStorage.getItem('rol');
           <div className="px-3 py-2 text-muted small">{usuariosFalsos.email}</div>
           <div className="dropdown-divider"></div>
             <a className="dropdown-item" href="/perfil"><i className="bi bi-person-circle me-2"></i> Mi Perfil</a>
-          <a className="dropdown-item"  >⚙ Configuración</a>
+         
           
-          <button className="dropdown-item text-danger" onClick={cerrarSesion}>Iniciar Sesion</button>
+          <button className="dropdown-item text-danger" onClick={cerrarSesion}>Cerrar Sesion</button>
+          
         </div>
       )}
     </div>

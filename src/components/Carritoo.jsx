@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { useCarrito } from './carrito'; // Asegúrate que esta ruta esté bien
+import { useCarrito } from './carrito'; 
+import Swal from 'sweetalert2';
+
 
 const Carrito = () => {
   const [mostrarPanel, setMostrarPanel] = useState(false);
@@ -7,6 +9,7 @@ const Carrito = () => {
 
   const total = carrito.reduce((acc, item) => acc + item.price * item.cantidad, 0);
 
+  
 
   return (
     <div>
@@ -67,10 +70,22 @@ const Carrito = () => {
             <button
               className="btn btn-success mt-2"
               onClick={() => {
-                alert('Compra realizada con éxito');
+                Swal.fire({
+                  title: 'Compra realizada',
+                  text: `Total: $${(total * 1.19).toFixed(2)}`,
+                  icon: 'success',
+                  confirmButtonText: 'Aceptar',
+                  position: 'center',
+                  timer: 2000,
+                  timerProgressBar: true,
+                  didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer);
+                    toast.addEventListener('mouseleave', Swal.resumeTimer);
+                  }
+                })
                 limpiarCarrito();
-                setMostrarPanel(false);
               }}
+            
                     >Comprar</button>
 
             <button

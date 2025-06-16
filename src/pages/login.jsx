@@ -12,7 +12,7 @@ const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const { login } = useContext(AuthContext); // ✅ Usamos el contexto
+  const { login } = useContext(AuthContext); 
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ const Login = () => {
     const usuario = usuariosFalsos.find((u) => u.email === email && u.clave === clave);
 
     if (usuario) {
-      login(usuario.rol); // ✅ Llamamos al método del contexto
+      login(usuario.rol);
       navigate(usuario.rol === 'admin' ? '/inicio' : '/productos');
     } else {
       setError('Correo o contraseña incorrectos');
@@ -41,12 +41,7 @@ const Login = () => {
       return;
     }
 
-    alert('Registro exitoso. Ahora puede iniciar sesión.');
-    setIsSignUp(false);
-    setNombre('');
-    setEmail('');
-    setClave('');
-    setConfirmClave('');
+  
   };
 
   return (

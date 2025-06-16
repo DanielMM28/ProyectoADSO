@@ -55,7 +55,8 @@ const TablaProductos = () => {
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          ⋮
+          
+          
         </button>
         <ul className="dropdown-menu">
           <li>
@@ -76,9 +77,7 @@ const TablaProductos = () => {
         </ul>
       </div>
     ),
-    ignoreRowClick: true,
-    allowOverflow: true,
-    button: true,
+   
   },
 
   ];

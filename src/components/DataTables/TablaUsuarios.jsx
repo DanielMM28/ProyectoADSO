@@ -49,7 +49,7 @@ const TablaUsuarios = () => {
             type="button"
             data-bs-toggle="dropdown"
           >
-            ⋮
+          
           </button>
           <ul className="dropdown-menu">
             <li>

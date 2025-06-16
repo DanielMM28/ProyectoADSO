@@ -129,7 +129,7 @@
 
     }
 
-    /* animacion de los formularios*/
+
 
    .sign-up{
      transform: translateX(-100%);
@@ -142,7 +142,7 @@
     transform: translateX(0);
    }
 
-   /*Welcome*/
+  
 
    .container-welcome{
     position: absolute;
@@ -225,7 +225,7 @@
   }
 
   .container-welcome {
-    display: none; /* Oculta el panel animado lateral en móviles */
+    display: none; 
   }
 
   .container-form h2 {

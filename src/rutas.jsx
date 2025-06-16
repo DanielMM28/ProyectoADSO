@@ -16,7 +16,7 @@ import { CarritoProvider } from './components/carrito';
 import { AuthProvider, AuthContext } from './autenticacion';
 import { useContext } from 'react';
 
-// ✅ Ruta protegida usando contexto
+
 const RutaPrivada = ({ children }) => {
   const { usuario } = useContext(AuthContext);
   return usuario ? children : <Navigate to="/login" replace />;
@@ -45,14 +45,14 @@ function AppRoutes() {
 
         <Route
           path="*"
-          element={<Navigate to={usuario ? "/inicio" : "/login"} replace />}
+          element={<Navigate to={usuario ? "/inicio1" : "/inicio1"} replace />}
         />
       </Routes>
     </Router>
   );
 }
 
-// ✅ Envuelve todo con los Providers necesarios
+
 function Rutas() {
   return (
     <CarritoProvider>

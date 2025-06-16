@@ -8,15 +8,15 @@ import perfil from '../assets/perfil.png';
 
 import './navbar.css';
 import PerfilMenu from './verperfil';
-import { AuthContext } from '../autenticacion'; // <-- Importa el contexto
+import { AuthContext } from '../autenticacion';
 
 const Navbar = () => {
-  const { usuario } = useContext(AuthContext); // <-- Usa el contexto
+  const { usuario } = useContext(AuthContext); 
   const rol = usuario?.rol || null;
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-custom bg-light">
-      <div className="container-fluid">
+    <nav className="navbar navbar-expand-lg navbar-custom bg-light" style={{ backgroundColor: 'white' }}>
+      <div className="container-fluid" style={{  backgroundColor: 'white' }}>
         <Link className="navbar-brand" to="/">
           <img src={logo} alt="Logo" className="perfil-img" />
         </Link>
