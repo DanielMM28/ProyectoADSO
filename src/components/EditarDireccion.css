@@ -1,0 +1,105 @@
+/* Estilo principal del formulario dentro del modal */
+.modal-body .container-fluid {
+  background-color: #fffbde;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* Mensaje informativo */
+.Entrega {
+  background-color: #fff3cd;
+  color: #665429;
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin-bottom: 20px;
+}
+
+/* Encabezado del formulario */
+.modal-title {
+  color: #096d82;
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Etiquetas */
+.form-group label {
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 5px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* Inputs y selects */
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #b1b0ab;
+  border-radius: 5px;
+  background-color: #fffbde;
+  color: #393737;
+}
+
+/* Botón */
+button[type="submit"] {
+  background-color: #096d82;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: #098ea3;
+}
+
+/* Mensajes */
+.mensaje-exito {
+  color: green;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.mensaje-error {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Distribución de campos en filas */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 45%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-group {
+    min-width: 100%;
+  }
+
+  .form-container,
+  .modal-body .container-fluid {
+    width: 100%;
+    padding: 10px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+  }
+
+  .Entrega {
+    width: 100%;
+  }
+}

@@ -8,6 +8,7 @@ const CarritoContext = createContext();
   const [carrito, setCarrito] = useState([]);
 
   const agregarAlCarrito = (producto) => {
+    
     setCarrito(prev => {
       const existe = prev.find(item => item.id === producto.id);
       if (existe) {
@@ -24,6 +25,10 @@ const CarritoContext = createContext();
 
   const eliminarDelCarrito = (id) => {
     setCarrito(prev => prev.filter(item => item.id !== id));
+  };
+  const comprar = () => {
+ 
+    
   };
 
   const limpiarCarrito = () => setCarrito([]);

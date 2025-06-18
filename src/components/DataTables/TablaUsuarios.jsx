@@ -92,7 +92,7 @@ const TablaUsuarios = () => {
 
   return (
     <div className="container mt-4">
-      <h4>Lista de Usuarios</h4>
+      
       <DataTable
         columns={columnas}
         data={usuarios}
@@ -101,6 +101,7 @@ const TablaUsuarios = () => {
         responsive
       />
     </div>
+   
   );
 };
 

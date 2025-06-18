@@ -1,18 +1,29 @@
 import React from 'react';
+import KardexPagina from '../components/DataTables/kardex';
 import Navbar from '../components/navbar';
-const Historial = () => {
+import Kardexfun from '../components/DataTables/kardex';
+
+function Kardex() {
   return (
     <>
-      
+    
+   
     <div className="container mt-5">
-      <h1 className="text-center">Historial de compras y ventas</h1>
-      <p>
-        Bienvenido a la sección de inicio. Aquí podrás encontrar toda la variedad de artículos disponibles en nuestra tienda virtual.
-        Próximamente agregaremos filtros, categorías, y opciones de búsqueda para facilitar tu experiencia.
-      </p>
-    </div>
+        <h1 className="text-center">Kardex de Productos</h1>
+        <p>
+          Bienvenido al Kardex de productos. Aquí podrás ver el registro de movimientos de inventario, incluyendo entradas y salidas de productos.
+          Utiliza la barra de búsqueda para filtrar por nombre de producto.
+        </p>
+        
+      <div className="card shadow-lg border-0">
+        <div className="card-body">
+          
+          <Kardexfun></Kardexfun>
+        </div>
+      </div>
+</div>
     </>
   );
-};
+}
 
-export default Historial;
+export default Kardex;

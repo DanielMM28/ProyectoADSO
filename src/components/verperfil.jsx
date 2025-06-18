@@ -48,7 +48,9 @@ const rol = localStorage.getItem('rol');
             <a className="dropdown-item" href="/perfil"><i className="bi bi-person-circle me-2"></i> Mi Perfil</a>
          
           
-          <button className="dropdown-item text-danger" onClick={cerrarSesion}>Cerrar Sesion</button>
+          <button className="dropdown-item text-danger" onClick={cerrarSesion}>
+  <i className="bi bi-box-arrow-right me-2"></i> Cerrar Sesión
+</button>
           
         </div>
       )}

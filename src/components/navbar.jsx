@@ -3,16 +3,27 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { Link } from 'react-router-dom';
 
+
 import logo from '../assets/logo.jpg';
 import perfil from '../assets/perfil.png';
 
 import './navbar.css';
 import PerfilMenu from './verperfil';
 import { AuthContext } from '../autenticacion';
+import { useEffect } from 'react';
+import * as bootstrap from 'bootstrap'; // Asegura tener bootstrap.bundle.js
+
 
 const Navbar = () => {
   const { usuario } = useContext(AuthContext); 
   const rol = usuario?.rol || null;
+  useEffect(() => {
+  const dropdownTriggerList = document.querySelectorAll('.dropdown-toggle');
+  dropdownTriggerList.forEach(dropdownToggleEl => {
+    new bootstrap.Dropdown(dropdownToggleEl);
+  });
+}, []);
+
 
   return (
     <nav className="navbar navbar-expand-lg navbar-custom bg-light" style={{ backgroundColor: 'white' }}>
@@ -44,7 +55,7 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/Productos">
-                    <i className="bi bi-box-arrow-in-right me-2"></i>Productos
+                    <i className=""></i>Productos
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -69,7 +80,7 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/Productos">
-                    <i className="bi bi-box-arrow-in-right me-2"></i>Productos
+                    <i className="bi bi-box-seam me-2"></i>Productos
                   </Link>
                 </li>
                 <li className="nav-item dropdown">
@@ -105,7 +116,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Historial">
+                  <Link className="nav-link" to="/historial">
                     <i className="bi bi-clock-history me-2"></i>Historial
                   </Link>
                 </li>

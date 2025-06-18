@@ -43,7 +43,26 @@ function Consumo() {
               <p className="card-text" style={{ fontSize: '14px', color: 'black' }}>
                 Precio: ${producto.price}
               </p>
-              <button className="btn btn-secondary mt-auto">Ver más</button>
+              <button className="btn btn-secondary mt-auto"onClick={() => {
+    Swal.fire({
+      title: producto.title,
+      html: `
+        <img src="${producto.image}" alt="${producto.title}" style="width:100px; height:100px; object-fit:contain;" />
+        <p class="mt-2"><strong>Precio:</strong> $${producto.price}</p>
+        <p><strong>Categoría:</strong> ${producto.category}</p>
+        <p><strong>Descripción:</strong> ${producto.description}</p>
+        <p><strong>Calificacion:</strong> ${producto.rating.rate}  </p>
+        
+        <p><strong>Personas:</strong> ${producto.rating.count}  </p>
+      `,
+      showCloseButton: true,
+      showConfirmButton: false,
+      width: 400,
+    });
+  }}
+>
+  Ver más
+</button>
               <button
                 className="btn btn-success mt-2"
                 onClick={() => {
