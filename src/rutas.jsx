@@ -13,7 +13,7 @@ import Usuarios from './pages/Usuario';
 import Contacto from './pages/Contacto';
 import Perfil from './pages/perfil';
 import Inicioo from './pages/inicio1';
-import Kardex from './pages/historial';
+import Kardex from './pages/Historial';
 
 import { CarritoProvider } from './components/carrito';
 import { AuthProvider, AuthContext } from './autenticacion';
