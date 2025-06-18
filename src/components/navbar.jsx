@@ -29,14 +29,7 @@ const Navbar = () => {
       })
     );
   }, []);
-const cerrarMenu = () => {
-  const navbarToggler = document.querySelector('.navbar-toggler');
-  const navbarCollapse = document.querySelector('.navbar-collapse');
 
-  if (navbarToggler && navbarCollapse.classList.contains('show')) {
-    navbarToggler.click(); // esto cierra el menú
-  }
-};
   return (
     <nav className="navbar navbar-expand-lg navbar-custom bg-light">
       <div className="container-fluid">
@@ -171,3 +164,4 @@ const cerrarMenu = () => {
 };
 
 export default Navbar;
+
