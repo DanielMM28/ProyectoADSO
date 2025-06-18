@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { Link } from 'react-router-dom';
-
+import * as bootstrap from 'bootstrap';
 
 import logo from '../assets/logo.jpg';
 import perfil from '../assets/perfil.png';
@@ -10,24 +10,29 @@ import perfil from '../assets/perfil.png';
 import './navbar.css';
 import PerfilMenu from './verperfil';
 import { AuthContext } from '../autenticacion';
-import { useEffect } from 'react';
-import * as bootstrap from 'bootstrap'; // Asegura tener bootstrap.bundle.js
-
 
 const Navbar = () => {
-  const { usuario } = useContext(AuthContext); 
+  const { usuario } = useContext(AuthContext);
   const rol = usuario?.rol || null;
-  useEffect(() => {
-  const dropdownTriggerList = document.querySelectorAll('.dropdown-toggle');
-  dropdownTriggerList.forEach(dropdownToggleEl => {
-    new bootstrap.Dropdown(dropdownToggleEl);
-  });
-}, []);
 
+  // Cerrar el menú al hacer clic en un enlace en móviles
+  useEffect(() => {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navbarCollapse = document.getElementById('navbarContent');
+
+    navLinks.forEach((link) =>
+      link.addEventListener('click', () => {
+        if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
+          const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse, { toggle: false });
+          bsCollapse.hide();
+        }
+      })
+    );
+  }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-custom bg-light" style={{ backgroundColor: 'white' }}>
-      <div className="container-fluid" style={{  backgroundColor: 'white' }}>
+    <nav className="navbar navbar-expand-lg navbar-custom bg-light">
+      <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           <img src={logo} alt="Logo" className="perfil-img" />
         </Link>
@@ -55,7 +60,7 @@ const Navbar = () => {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/Productos">
-                    <i className=""></i>Productos
+                    Productos
                   </Link>
                 </li>
                 <li className="nav-item">
