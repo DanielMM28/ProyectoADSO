@@ -21,7 +21,7 @@ const cerrarMenu = () => {
   const navbarCollapse = document.querySelector('.navbar-collapse');
 
   if (navbarToggler && navbarCollapse.classList.contains('show')) {
-    navbarToggler.click(); // esto cierra el menú
+    navbarToggler.click(); 
   }
 };
   return (
@@ -54,7 +54,7 @@ const cerrarMenu = () => {
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link" to="/Productos" onClick={cerrarMenu}>
-                    Productos
+                     <i className="bi bi-box-seam me-2"></i>Productos
                   </Link>
                 </li>
                 <li className="nav-item">
