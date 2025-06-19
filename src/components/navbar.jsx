@@ -15,21 +15,15 @@ const Navbar = () => {
   const { usuario } = useContext(AuthContext);
   const rol = usuario?.rol || null;
 
-  // Cerrar el menú al hacer clic en un enlace en móviles
-  useEffect(() => {
-    const navLinks = document.querySelectorAll('.nav-link');
-    const navbarCollapse = document.getElementById('navbarContent');
 
-    navLinks.forEach((link) =>
-      link.addEventListener('click', () => {
-        if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
-          const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse) || new bootstrap.Collapse(navbarCollapse, { toggle: false });
-          bsCollapse.hide();
-        }
-      })
-    );
-  }, []);
+const cerrarMenu = () => {
+  const navbarToggler = document.querySelector('.navbar-toggler');
+  const navbarCollapse = document.querySelector('.navbar-collapse');
 
+  if (navbarToggler && navbarCollapse.classList.contains('show')) {
+    navbarToggler.click(); // esto cierra el menú
+  }
+};
   return (
     <nav className="navbar navbar-expand-lg navbar-custom bg-light">
       <div className="container-fluid">
@@ -45,7 +39,7 @@ const Navbar = () => {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             {rol === null && (
               <li className="nav-item">
-                <Link className="nav-link" to="/inicio1">
+                <Link className="nav-link" to="/inicio1" onClick={cerrarMenu}>
                   <i className="bi bi-house-door me-2"></i>Inicio
                 </Link>
               </li>
@@ -54,22 +48,22 @@ const Navbar = () => {
             {rol === 'visitante' && (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/inicio1">
+                  <Link className="nav-link" to="/inicio1" onClick={cerrarMenu}>
                     <i className="bi bi-house-door me-2"></i>Inicio
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Productos">
+                  <Link className="nav-link" to="/Productos" onClick={cerrarMenu}>
                     Productos
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Contacto">
+                  <Link className="nav-link" to="/Contacto" onClick={cerrarMenu}>
                     <i className="bi bi-envelope me-2"></i>Contacto
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/login">
+                  <Link className="nav-link" to="/login" onClick={cerrarMenu}>
                     <i className="bi bi-box-arrow-in-right me-2"></i>Iniciar Sesión
                   </Link>
                 </li>
@@ -79,12 +73,12 @@ const Navbar = () => {
             {rol === 'admin' && (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/inicio">
+                  <Link className="nav-link" to="/inicio"   onClick={cerrarMenu}>
                     <i className="bi bi-house-door me-2"></i>Inicio
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Productos">
+                  <Link className="nav-link" to="/Productos" onClick={cerrarMenu}>
                     <i className="bi bi-box-seam me-2"></i>Productos
                   </Link>
                 </li>
@@ -94,39 +88,39 @@ const Navbar = () => {
                   </a>
                   <ul className="dropdown-menu">
                     <li>
-                      <Link className="dropdown-item" to="/InvProduct">
+                      <Link className="dropdown-item" to="/InvProduct" onClick={cerrarMenu}>
                         <i className="bi bi-box-seam me-2"></i>Lista de Productos
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" to="/Categorias">
+                      <Link className="dropdown-item" to="/Categorias" onClick={cerrarMenu}>
                         <i className="bi bi-tags me-2"></i>Lista de Categorías
                       </Link>
                     </li>
                     <li>
-                      <Link className="dropdown-item" to="/Marcas">
+                      <Link className="dropdown-item" to="/Marcas" onClick={cerrarMenu}>
                         <i className="bi bi-bookmark-star me-2"></i>Lista de Marcas
                       </Link>
                     </li>
                   </ul>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Clientes">
+                  <Link className="nav-link" to="/Clientes" onClick={cerrarMenu}>
                     <i className="bi bi-people me-2"></i>Clientes
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Usuarios">
+                  <Link className="nav-link" to="/Usuarios" onClick={cerrarMenu}>
                     <i className="bi bi-person-circle me-2"></i>Usuarios
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/historial">
+                  <Link className="nav-link" to="/historial" onClick={cerrarMenu}>
                     <i className="bi bi-clock-history me-2"></i>Historial
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Contacto">
+                  <Link className="nav-link" to="/Contacto" onClick={cerrarMenu}>
                     <i className="bi bi-envelope me-2"></i>Contacto
                   </Link>
                 </li>
@@ -136,17 +130,17 @@ const Navbar = () => {
             {rol === 'comprador' && (
               <>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/inicio1">
+                  <Link className="nav-link" to="/inicio1" onClick={cerrarMenu}>
                     <i className="bi bi-house-door me-2"></i>Inicio
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Productos">
+                  <Link className="nav-link" to="/Productos" onClick={cerrarMenu}>
                     <i className="bi bi-box-seam me-2"></i>Productos
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/Contacto">
+                  <Link className="nav-link" to="/Contacto" onClick={cerrarMenu}>
                     <i className="bi bi-envelope me-2"></i>Contacto
                   </Link>
                 </li>
@@ -160,6 +154,11 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+  );
+};
+
+export default Navbar;
+
   );
 };
 
